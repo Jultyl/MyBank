@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import {PriceConverter} from "./PriceConverter.sol";
+import {PriceConversion} from "./PriceConversion.sol";
 
 interface ClientRegistryFunction {
         function clientRegistry() external view returns (address);
