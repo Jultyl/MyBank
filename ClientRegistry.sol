@@ -43,7 +43,7 @@ contract ClientRegistry {
     function registerClient(string memory _clientName, string memory _clientIC) external payable {
         if (address(msg.sender) == owner) revert ClientRegistered();
         if (IsClientRegistered[msg.sender] == true) revert ClientRegistered();
-        if (msg.value.getPriceConvert() < openAccountMinimumDeposit) revert MinimumFirstDepostAmount5USD();
+        if (msg.value.getPriceConversion() < openAccountMinimumDeposit) revert MinimumFirstDepostAmount5USD();
         IsClientRegistered[msg.sender] = true;
         clientDatabase.push(Client(msg.sender, clientAccountNumber, _clientName, _clientIC, msg.value));                
         clientAccountNumber ++;
