@@ -25,7 +25,7 @@ contract ClientRegistry {
     address public owner ;
     uint256 public clientAccountNumber;
     uint256 internal openAccountMinimumDeposit = 5;
-    address public priceConverteraddress ;
+    address public priceConversionaddress ;
 
     error   ClientRegistered();
     error   MinimumFirstDepostAmount5USD();
