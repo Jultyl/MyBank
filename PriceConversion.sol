@@ -14,7 +14,7 @@ library PriceConversion {
 
     }
 
-    function getPriceConverter (uint256 _ethAmount) public view returns(uint256){
+    function getPriceConversion (uint256 _ethAmount) public view returns(uint256){
         uint256 _ethPrice = getPrice();
         uint256 _EthAmountInUSD = _ethAmount * _ethPrice;
         return _EthAmountInUSD ;
