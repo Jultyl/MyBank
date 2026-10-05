@@ -9,4 +9,4 @@ For this project, I have created a SmartContract emulating an online bank with c
 
 Along with libraries and interfaces, I have created a bank without referring to crypto wallet addresses!
 
-It has an account registry to manage client database. Useful for your reference if you need to deploy a CRM-like contract. Let me know your thoughts <3 (:
+It has an account registry to manage client database. Useful for your reference if you need to deploy a CRM-like contract. Let me know your thoughts (:
