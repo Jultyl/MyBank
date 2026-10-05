@@ -15,6 +15,23 @@ contract MyBank {
     error ClientNotRegistered();
     error AddressCantFind();
 
+    event logReceiveData (address sender, uint256 receivedAmount);
+    event logFallbackData (address sender, uint256 receivedAmount, bytes data);
+
+    constructor(address _myClientRegistryAddress){
+        myClientRegistry = ClientRegistry(_myClientRegistryAddress);
+    }
+
+    function deposit () payable external {
+        uint256 _accountNumber = searchArrAddForAccNum(msg.sender); 
+        myClientRegistry.updateAccountBalance (_accountNumber, checkAccountBalance(_accountNumber) + msg.value);
+    }
+
+    function withdraw ( uint256 _withdrawAmount) external {
+        if (searchArrAddForAccNum(address(msg.sender)) == 0 ) revert ClientNotRegistered();
+        uint256 _accountNumber = searchArrAddForAccNum(address(msg.sender));        
+        if (_withdrawAmount > checkAccountBalance(_accountNumber)) revert NotSufficientBalance();
+
         myClientRegistry.updateAccountBalance (_accountNumber, checkAccountBalance(_accountNumber) - _withdrawAmount);
         (bool success, ) = payable(msg.sender).call{value: _withdrawAmount}("");                
         if ( !success) revert TransactionFail();
